@@ -10,13 +10,22 @@ class SuperProgramm
 {
     public static void Main()
     {
-        //AddTolchki();
+        AddTolchki();
         //DeleteTolchki();
         //UpdateTolch("Yolsa", new Weapon() { Name = "Saber", Material = Material.Dural, Description = "Old dural saber"});
         //ReadTolchki();
         //AddGame();
         //ReadGames();
+        DeleteById(3);
         ShowTolchJson();
+    }
+
+    private static void DeleteById(int id)
+    {
+        using var context = new LarpPlayersDbContext();
+        var toDelete = context.LarpPlayers.Find(id);
+        context.LarpPlayers.Remove(toDelete);
+        context.SaveChanges();
     }
 
     private static void ShowTolchJson()
