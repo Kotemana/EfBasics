@@ -10,14 +10,14 @@ class SuperProgramm
 {
     public static void Main()
     {
-        AddTolchki();
+        //AddTolchki();
         //DeleteTolchki();
         //UpdateTolch("Yolsa", new Weapon() { Name = "Saber", Material = Material.Dural, Description = "Old dural saber"});
-        //ReadTolchki();
+        ReadTolchki();
         //AddGame();
         //ReadGames();
-        DeleteById(3);
-        ShowTolchJson();
+        //DeleteById(3);
+        //ShowTolchJson();
     }
 
     private static void DeleteById(int id)
@@ -122,16 +122,22 @@ class SuperProgramm
             //.Include(x=>x.Games).Include(x=>x.Weapons); //eager load
 
             var tolchkiNotDexter = tolchki.Where(x => x.LarpName!="Dexter").ToList();
-            foreach (var tolch in tolchkiNotDexter)
+            for (int i = 1; i <= tolchkiNotDexter.Count; i++)
             {
-                Console.WriteLine(tolch.LarpName);
-
-                foreach (var weapon in tolch.Weapons)
-                {
-                    Console.WriteLine(weapon.Name);
-                }
-
+                Console.WriteLine($"{i} - {tolchkiNotDexter[i-1].LarpName}");
             }
+            var answer = int.Parse(Console.ReadLine());
+            Console.WriteLine($"{tolchkiNotDexter[answer-1].LarpName} has {tolchkiNotDexter[answer-1].Weapons.Count} weapons");
+            //foreach (var tolch in tolchkiNotDexter)
+            //{
+            //    Console.WriteLine(tolch.LarpName);
+
+            //    foreach (var weapon in tolch.Weapons)
+            //    {
+            //        Console.WriteLine(weapon.Name);
+            //    }
+
+            //}
 
 
         }
